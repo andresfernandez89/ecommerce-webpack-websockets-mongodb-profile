@@ -1,31 +1,74 @@
-## LOGGERS, GZIP y ANÁLISIS DE PERFORMANCE
+# APP ECOMMERCE WEBSOCKETS PROFILE
 
-**Consigna:** Retomemos nuestro trabajo para implementar compresión por Gzip, registros por loggueo, y analizar la performance de nuestro servidor.
+## CRUD - NODEJS - EXPRESS - WEBPACK - MONGO DB - WEBSOCKETS - PASSPORT - WEBSOCKETS - KNEX
 
-- Incorporar al proyecto de servidor de trabajo la compresión gzip.
-  Verificar sobre la ruta /info con y sin compresión, la diferencia de cantidad de bytes devueltos en un caso y otro.
-  Luego implementar loggueo (con alguna librería vista en clase) que registre lo siguiente:
-  Ruta y método de todas las peticiones recibidas por el servidor (info)
-  Ruta y método de las peticiones a rutas inexistentes en el servidor (warning)
-  Errores lanzados por las apis de mensajes y productos, únicamente (error)
-  Considerar el siguiente criterio:
-  Loggear todos los niveles a consola (info, warning y error)
-  Registrar sólo los logs de warning a un archivo llamada warn.log
-  Enviar sólo los logs de error a un archivo llamada error.log
+## Deploy
 
-- Luego, realizar el análisis completo de performance del servidor con el que venimos trabajando.
-  Vamos a trabajar sobre la ruta '/info', en modo fork, agregando ó extrayendo un console.log de la información colectada antes de devolverla al cliente. Además desactivaremos el child_process de la ruta '/randoms'
+Deploy on heroku
 
-Para ambas condiciones (con o sin console.log) en la ruta '/info' OBTENER:
+https://apirest-node-mongo-express.herokuapp.com/
 
-1. El perfilamiento del servidor, realizando el test con --prof de node.js. Analizar los resultados obtenidos luego de procesarlos con --prof-process.
-   Utilizaremos como test de carga Artillery en línea de comandos, emulando 50 conexiones concurrentes con 20 request por cada una. Extraer un reporte con los resultados en archivo de texto.
+## Technologies
 
-- Luego utilizaremos Autocannon en línea de comandos, emulando 100 conexiones concurrentes realizadas en un tiempo de 20 segundos. Extraer un reporte con los resultados (puede ser un print screen de la consola)
+- @babel/core: "^7.17.0",
+- @babel/preset-env: "^7.16.11",
+- autocannon: "^7.6.0",
+- babel-loader: "^8.2.3",
+- babel-polyfill: "^6.26.0",
+- compression: "^1.7.4",
+- connect-mongo: "^4.6.0",
+- connect-redis: "^6.0.0",
+- cors: "^2.8.5",
+- dotenv: "^14.2.0",
+- ejs: "^3.1.6",
+- express: "^4.17.1",
+- express-session: "^1.17.2",
+- faker: "^5.5.3",
+- install: "^0.13.0",
+- knex: "^0.95.14",
+- log4js: "^6.4.1",
+- minimist: "^1.2.5",
+- moment: "^2.29.1",
+- mongoose: "^6.1.3",
+- mysql: "^2.18.1",
+- normalizr: "^3.6.1",
+- npm: "^8.7.0",
+- passport: "^0.5.2",
+- passport-local: "^1.0.0",
+- redis: "^4.0.1",
+- socket.io: "^4.3.1",
+- webpack: "^5.68.0",
+- webpack-cli: "^4.9.2",
+- webpack-node-externals: "^3.0.0"
+- nodemon: "^2.0.14"
 
-2. El perfilamiento del servidor con el modo inspector de node.js --inspect. Revisar el tiempo de los procesos menos performantes sobre el archivo fuente de inspección.
+## Get Started
 
-3. El diagrama de flama con 0x, emulando la carga con Autocannon con los mismos parámetros anteriores.
-   Realizar un informe en formato pdf sobre las pruebas realizadas incluyendo los resultados de todos los test (texto e imágenes).
+App require [Node.js](https://nodejs.org/)
 
-Al final incluir la conclusión obtenida a partir del análisis de los datos.
+Install dependencies
+
+```sh
+npm i
+npm start
+```
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
+
+## .env file
+
+- MONGO_URL=
+- MONGO_SECRET=
+- MYSQL_CLIENT=mysql
+- MYSQL_HOST=localhost
+- MYSQL_PORT=
+- MYSQL_USER=
+- MYSQL_PASS=
+- MYSQL_DATABASE=

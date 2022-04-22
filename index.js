@@ -1,6 +1,9 @@
 /************************Babel Polyfill*********************************/
 require("babel-polyfill");
 
+/************************Cors*********************************/
+const cors = require("cors");
+
 /*********************************  Express *********************************/
 const express = require("express");
 
@@ -12,13 +15,13 @@ const numCPUs = require("os").cpus().length;
 /*********************************  Dotenv *********************************/
 require("dotenv").config();
 
-const config = require("./config");
+const config = require("./src/config");
 
 /*********************************  Minimist *********************************/
 const parseArg = require("minimist");
 
 /*********************************  Logger *********************************/
-const log4js = require("./logger");
+const log4js = require("./src/logger");
 const logger = log4js.getLogger();
 const loggerRoute = log4js.getLogger("routeNotExist");
 
@@ -40,16 +43,16 @@ let redisClient = redis.createClient({host: "localhost", port: 6379, legacyMode:
 
 /*********************************  Routes *********************************/
 
-const loginRoutes = require("./routes/auth");
-const homeRoutes = require("./routes/home");
-const productsRoutes = require("./routes/products");
-const infoRoutes = require("./routes/info");
-const randomRoutes = require("./routes/random");
+const loginRoutes = require("./src/routes/auth");
+const homeRoutes = require("./src/routes/home");
+const productsRoutes = require("./src/routes/products");
+const infoRoutes = require("./src/routes/info");
+const randomRoutes = require("./src/routes/random");
 
-const Contenedor = require("./Contenedor");
+const Contenedor = require("./src/Contenedor");
 const store = new Contenedor("products");
 
-const Chat = require("./Chat.js");
+const Chat = require("./src/Chat.js");
 const chat = new Chat();
 
 const {PORT, SERVER} = parseArg(process.argv.slice(2), {default: {PORT: 8080, SERVER: "FORK"}});
@@ -66,7 +69,7 @@ if (cluster.isPrimary && SERVER === "CLUSTER") {
 	const app = express();
 	const server = http.createServer(app);
 	/*********************************  Engine *********************************/
-
+	app.use(cors());
 	app.set("views", "./views");
 	app.set("view engine", "ejs");
 
@@ -139,7 +142,7 @@ if (cluster.isPrimary && SERVER === "CLUSTER") {
 	server.on("error", (error) => logger.error(`Error en servidor: ${error}`));
 
 	/*********************************  Normalizr *********************************/
-	const {chatSchema, normalize, denormalize, print} = require("./normalizacion/index");
+	const {chatSchema, normalize, denormalize, print} = require("./src/normalizacion/index");
 
 	/*********************************  Socket *********************************/
 	const io = require("socket.io")(server);
