@@ -36,7 +36,7 @@
     "nodemon": "^2.0.14"
   },
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node dist/main",
     "build": "webpack ./src --mode=production",
     "dev": "webpack --watch ./src --mode=development"
   },
