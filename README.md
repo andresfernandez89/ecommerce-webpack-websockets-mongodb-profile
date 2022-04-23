@@ -2,12 +2,6 @@
 
 ## CRUD - NODEJS - EXPRESS - WEBPACK - MONGO DB - WEBSOCKETS - PASSPORT - WEBSOCKETS - KNEX
 
-## Deploy
-
-Deploy on heroku
-
-https://apirest-node-mongo-express.herokuapp.com/
-
 ## Technologies
 
 - @babel/core: "^7.17.0",
